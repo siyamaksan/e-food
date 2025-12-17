@@ -32,24 +32,29 @@ public class TelegramFeignPollingService {
 
     @Scheduled(fixedDelay = 3000)
     public void pollMessages() {
-        TelegramResponse response = telegramClient.getUpdates(lastUpdateId > 0 ? lastUpdateId + 1 : null, 100);
+        try {
+            TelegramResponse response = telegramClient.getUpdates(lastUpdateId > 0 ? lastUpdateId + 1 : null, 100);
 
-        if (!response.isOk()) {
-            log.error("Failed to fetch updates from Telegram");
-            return;
-        }
-
-        for (Update update : response.getResult()) {
-            lastUpdateId = update.getUpdateId();
-            Message message = update.getMessage();
-            if (message != null) {
-                String text = message.getText();
-
-                String telegramId = String.valueOf(message.getFrom() != null ? message.getFrom().getId() :0);
-
-
-                orderService.add(text,telegramId);
+            if (!response.isOk()) {
+                log.error("Failed to fetch updates from Telegram");
+                return;
             }
+
+            for (Update update : response.getResult()) {
+                lastUpdateId = update.getUpdateId();
+                Message message = update.getMessage();
+                if (message != null) {
+                    String text = message.getText();
+
+                    String telegramId = String.valueOf(message.getFrom() != null ? message.getFrom().getId() : 0);
+
+
+                    orderService.add(text, telegramId);
+                }
+
+            }
+        } catch (Exception e) {
+            log.error("Failed to connect Telegram");
         }
     }
 }
