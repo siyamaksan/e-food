@@ -21,4 +21,4 @@ spring:
 
 telegram:
   bot:
-    token : 8553993939:AAHkftJi5NXHf8ZrcOmb9MvZXo63f-n8t6w
+    token : your_key
