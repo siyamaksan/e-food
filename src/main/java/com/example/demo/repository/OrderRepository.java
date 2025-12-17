@@ -3,7 +3,7 @@ package com.example.demo.repository;
 import com.example.demo.dto.response.FoodDto;
 import com.example.demo.model.Food;
 import com.example.demo.model.Order;
-import org.jspecify.annotations.Nullable;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

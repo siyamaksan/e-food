@@ -9,7 +9,7 @@ import com.example.demo.service.FoodService;
 import com.example.demo.service.OrderService;
 import com.example.demo.service.UserService;
 import jakarta.transaction.Transactional;
-import org.jspecify.annotations.Nullable;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -46,7 +46,7 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public @Nullable List<Food> getAll(Long userId, Long foodId, LocalDate date) {
+    public  List<Food> getAll(Long userId, Long foodId, LocalDate date) {
         return orderRepository.findFoodByOptionalFilters(userId,foodId,date);
     }
 

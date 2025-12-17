@@ -11,10 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
 
-@Slf4j
+
 @Service
 public class TelegramFeignPollingService {
 
@@ -30,9 +28,8 @@ public class TelegramFeignPollingService {
         this.telegramClient = telegramClient;
     }
 
-    @Scheduled(fixedDelay = 3000)
+    @Scheduled(fixedDelay = 1000)
     public void pollMessages() {
-        try {
             TelegramResponse response = telegramClient.getUpdates(lastUpdateId > 0 ? lastUpdateId + 1 : null, 100);
 
             if (!response.isOk()) {
@@ -53,8 +50,6 @@ public class TelegramFeignPollingService {
                 }
 
             }
-        } catch (Exception e) {
-            log.error("Failed to connect Telegram");
-        }
+
     }
 }
