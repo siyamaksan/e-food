@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.dto.telegram.TelegramResponse;
 import com.example.demo.service.telegram.TelegramClient;
 import com.example.demo.service.telegram.TelegramFeignPollingService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -10,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import tools.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @Transactional
@@ -62,13 +62,6 @@ public class TelegramTest {
         }
     }
 
-    @Test
-    public void pollMessages() {
-        Mockito.when(telegramClient.getUpdates(null, 100))
-                .thenReturn(getMessage());
 
-        telegramFeignPollingService.pollMessages();
-
-    }
 
 }

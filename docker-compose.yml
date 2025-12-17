@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: foodbot-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: foodbot
+      MYSQL_USER: foodbot_user
+      MYSQL_PASSWORD: foodbot_pass123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+  app:
+    build: .
+    container_name: foodbot-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/foodbot?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: foodbot_user
+      SPRING_DATASOURCE_PASSWORD: foodbot_pass123
+      BOT_TOKEN: ${BOT_TOKEN:-YOUR_REAL_BOT_TOKEN_HERE}
+      BOT_NAME: ${BOT_NAME:-your_food_bot}
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: secret123
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  mysql-data:
