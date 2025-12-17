@@ -24,9 +24,9 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User findByTelegramId(Long telegramId) {
+    public User findByTelegramId(String telegramId) {
         return userRepository.findByTelegramId(telegramId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+                .orElse(new User().setTelegramId(telegramId));
 
     }
 }

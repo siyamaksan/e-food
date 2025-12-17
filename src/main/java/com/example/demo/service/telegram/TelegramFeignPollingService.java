@@ -44,8 +44,8 @@ public class TelegramFeignPollingService {
             Message message = update.getMessage();
             if (message != null) {
                 String text = message.getText();
-                String username = message.getFrom() != null ? message.getFrom().getUsername() : "unknown";
-                Long telegramId = message.getFrom() != null ? message.getFrom().getId() :0;
+
+                String telegramId = String.valueOf(message.getFrom() != null ? message.getFrom().getId() :0);
 
 
                 orderService.add(text,telegramId);

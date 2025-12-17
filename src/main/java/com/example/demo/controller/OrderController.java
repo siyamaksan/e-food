@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.form.CreateFoodDto;
 import com.example.demo.dto.response.FoodDto;
 import com.example.demo.dto.security.SecurityContext;
+import com.example.demo.model.Food;
 import com.example.demo.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@RestController("/orders")
+@RestController
+@RequestMapping("/orders")
 public class OrderController {
 
     private final OrderService orderService;
@@ -21,9 +23,9 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FoodDto>> getAll(@RequestParam(required = false) Long userId,
-                                                @RequestParam(required = false) LocalDate date,
-                                                @RequestParam(required = false) Long foodId
+    public ResponseEntity<List<Food>> getAll(@RequestParam(required = false) Long userId,
+                                             @RequestParam(required = false) LocalDate date,
+                                             @RequestParam(required = false) Long foodId
     ) {
         return ResponseEntity
                 .ok()

@@ -30,7 +30,7 @@ public class OrderServiceImp implements OrderService {
 
     @Transactional
     @Override
-    public void add(String msg, Long telegramId) {
+    public void add(String msg, String telegramId) {
 
         Order order = new Order();
 
@@ -46,7 +46,7 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public @Nullable List<FoodDto> getAll(Long userId, Long foodId, LocalDate date) {
+    public @Nullable List<Food> getAll(Long userId, Long foodId, LocalDate date) {
         return orderRepository.findFoodByOptionalFilters(userId,foodId,date);
     }
 

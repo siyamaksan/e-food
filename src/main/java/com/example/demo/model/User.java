@@ -47,8 +47,9 @@ public class User {
         return telegramId;
     }
 
-    public void setTelegramId(String telegramId) {
+    public User setTelegramId(String telegramId) {
         this.telegramId = telegramId;
+        return this;
     }
 
     public UserStatus getStatus() {
