@@ -34,7 +34,7 @@ public class TelegramFeignPollingService {
 
     }
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 3000)
     public void pollMessages() {
 
         TelegramResponse response = telegramClient.getUpdates(lastUpdateId > 0 ? lastUpdateId + 1 : null, 100);

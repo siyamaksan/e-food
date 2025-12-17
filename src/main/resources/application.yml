@@ -28,8 +28,8 @@ resilience4j:
   circuitbreaker:
     instances:
       telegramClient:
-        slidingWindowSize: 2
-        failureRateThreshold: 10
+        slidingWindowSize: 10
+        failureRateThreshold: 50
         waitDurationInOpenState: 10s
         permittedNumberOfCallsInHalfOpenState: 3
 
