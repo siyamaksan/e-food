@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import com.example.demo.enums.OrderStatus;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(name = "TBL_ORDER")
+@Builder
 public class Order {
 
     @Id
@@ -25,6 +27,9 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_id")
     private Food food;
+
+    @Column
+    private Long messageId;
 
     @Column
     private LocalDateTime createOrderTime;
@@ -48,51 +53,6 @@ public class Order {
         this.updateOrderTime = LocalDateTime.now();
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Food getFood() {
-        return food;
-    }
-
-    public void setFood(Food food) {
-        this.food = food;
-    }
-
-    public LocalDateTime getCreateOrderTime() {
-        return createOrderTime;
-    }
-
-    public void setCreateOrderTime(LocalDateTime createOrderTime) {
-        this.createOrderTime = createOrderTime;
-    }
-
-    public LocalDateTime getUpdateOrderTime() {
-        return updateOrderTime;
-    }
-
-    public void setUpdateOrderTime(LocalDateTime updateOrderTime) {
-        this.updateOrderTime = updateOrderTime;
-    }
-
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
 }

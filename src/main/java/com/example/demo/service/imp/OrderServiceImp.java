@@ -1,6 +1,5 @@
 package com.example.demo.service.imp;
 
-import com.example.demo.dto.response.FoodDto;
 import com.example.demo.model.Food;
 import com.example.demo.model.Order;
 import com.example.demo.model.User;
@@ -30,16 +29,17 @@ public class OrderServiceImp implements OrderService {
 
     @Transactional
     @Override
-    public void add(String msg, String telegramId) {
+    public void add(String msg, String telegramId, long lastUpdateId) {
 
-        Order order = new Order();
 
         User user = userService.findByTelegramId(telegramId);
 
         Food food = foodService.findByCode(msg);
 
-        order.setUser(user);
-        order.setFood(food);
+        Order order = Order.builder()
+                .user(user)
+                .food(food)
+                .messageId(lastUpdateId).build();
 
         orderRepository.save(order);
 
@@ -48,6 +48,12 @@ public class OrderServiceImp implements OrderService {
     @Override
     public  List<Food> getAll(Long userId, Long foodId, LocalDate date) {
         return orderRepository.findFoodByOptionalFilters(userId,foodId,date);
+    }
+
+    @Override
+    public long getLastMessageId() {
+        return orderRepository.findMaxMessageId();
+
     }
 
 

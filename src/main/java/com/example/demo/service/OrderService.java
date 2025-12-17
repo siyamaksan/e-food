@@ -7,7 +7,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface OrderService {
-    void add(String msg, String userId);
+    void add(String msg, String userId, long lastUpdateId);
 
      List<Food> getAll(Long userId, Long foodId, LocalDate date);
+
+    long getLastMessageId();
 }

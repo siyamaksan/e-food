@@ -23,4 +23,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             @Param("userId") Long userId,
             @Param("foodId") Long foodId,
             @Param("date") LocalDate date);
+
+    @Query("SELECT COALESCE(MAX(o.messageId), 0) FROM Order o")
+    long findMaxMessageId();
 }
