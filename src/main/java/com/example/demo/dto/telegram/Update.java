@@ -1,7 +1,9 @@
 package com.example.demo.dto.telegram;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.ToString;
 
+@ToString
 public class Update {
     @JsonProperty("update_id")
     private long updateId;

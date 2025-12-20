@@ -1,5 +1,8 @@
 package com.example.demo.dto.telegram;
 
+import lombok.ToString;
+
+@ToString
 public class User {
     private Long id;
     private String username;

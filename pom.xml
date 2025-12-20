@@ -64,9 +64,11 @@
             <version>5.4.30.Final</version>
             <scope>compile</scope>
         </dependency>
+
+
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
 
