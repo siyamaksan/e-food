@@ -29,7 +29,7 @@ public class OrderServiceImp implements OrderService {
 
     @Transactional
     @Override
-    public void add(String msg, String telegramId, long lastUpdateId) {
+    public void add(String msg, Long telegramId, long lastUpdateId,Long chatId) {
 
 
         User user = userService.findByTelegramId(telegramId);
@@ -39,6 +39,7 @@ public class OrderServiceImp implements OrderService {
         Order order = Order.builder()
                 .user(user)
                 .food(food)
+                .chatId(chatId)
                 .messageId(lastUpdateId).build();
 
         orderRepository.save(order);

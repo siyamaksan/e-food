@@ -32,6 +32,9 @@ public class Order {
     private Long messageId;
 
     @Column
+    private Long chatId;
+
+    @Column
     private LocalDateTime createOrderTime;
 
     @Column

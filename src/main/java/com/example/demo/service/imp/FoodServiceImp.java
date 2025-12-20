@@ -25,6 +25,11 @@ public class FoodServiceImp implements FoodService {
     }
 
     @Override
+    public List<FoodDto> findAll() {
+        return foodRepository.findAllSummary();
+    }
+
+    @Override
     public Food findByCode(String msg) {
         return foodRepository.findByCode(msg)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Food not found"));

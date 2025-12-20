@@ -24,7 +24,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User findByTelegramId(String telegramId) {
+    public User findByTelegramId(Long telegramId) {
         return userRepository.findByTelegramId(telegramId)
                 .orElse(new User().setTelegramId(telegramId));
 

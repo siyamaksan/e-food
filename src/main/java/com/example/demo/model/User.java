@@ -26,7 +26,8 @@ public class User implements UserDetails {
     private String name;
 
     @Column
-    private String telegramId;
+    private Long telegramId;
+
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -53,11 +54,11 @@ public class User implements UserDetails {
         this.name = name;
     }
 
-    public String getTelegramId() {
+    public Long getTelegramId() {
         return telegramId;
     }
 
-    public User setTelegramId(String telegramId) {
+    public User setTelegramId(Long telegramId) {
         this.telegramId = telegramId;
         return this;
     }

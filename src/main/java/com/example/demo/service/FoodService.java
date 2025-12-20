@@ -9,4 +9,6 @@ public interface FoodService {
     List<FoodDto> getAll(String name);
 
     Food findByCode(String msg);
+
+    List<FoodDto>  findAll();
 }

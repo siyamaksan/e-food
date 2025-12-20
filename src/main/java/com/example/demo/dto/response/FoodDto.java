@@ -8,6 +8,7 @@ public interface FoodDto {
 
     Long getId();
     Long getName();
+    Long getCode();
     Long getPrice();
 
 }
