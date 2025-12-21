@@ -78,9 +78,9 @@ public class TelegramFeignPollingService {
 
     private void sendFoodList(Long chatId){
         String text = foodService.findAll().stream()
-                .map(food -> String.valueOf(food.getCode()) + food.getName())
+                .map(food -> food.getCode() +" " + food.getName())
                 .distinct()
-                .collect(Collectors.joining("-"));
+                .collect(Collectors.joining("\n"));
         sendMessage(chatId,text);
     }
 

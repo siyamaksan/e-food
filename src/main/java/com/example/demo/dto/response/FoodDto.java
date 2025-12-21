@@ -7,8 +7,8 @@ import lombok.Setter;
 public interface FoodDto {
 
     Long getId();
-    Long getName();
-    Long getCode();
+    String getName();
+    String getCode();
     Long getPrice();
 
 }
